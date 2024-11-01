@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_padding">16dp</dimen>
+    <dimen name="increased_padding">40dp</dimen>
+
+    <dimen name="default_text_size">16sp</dimen>
+    <dimen name="img_width_height">120dp</dimen>
+    <dimen name="slide_title">20sp</dimen>
+    <dimen name="desc_padding">10dp</dimen>
+    <dimen name="slide_desc">18sp</dimen>
+    <dimen name="dots_height">30dp</dimen>
+    <dimen name="dots_margin_bottom">20dp</dimen>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="_8dp">8dp</dimen>
+    <dimen name="_16dp">16dp</dimen>
+    <dimen name="_24dp">24dp</dimen>
+    <dimen name="_36dp">36dp</dimen>
+    <dimen name="_5dp">5dp</dimen>
+    <dimen name="dp10">10dp</dimen>
+    <dimen name="_28dp">28dp</dimen>
+    <dimen name="margin_16dp">16dp</dimen>
+    <dimen name="pv_pin_view_item_size">48dp</dimen>
+    <dimen name="pv_pin_view_item_spacing">5dp</dimen>
+    <dimen name="pv_pin_view_item_line_width">2dp</dimen>
+    <dimen name="pv_pin_view_cursor_width">2dp</dimen>
+</resources>

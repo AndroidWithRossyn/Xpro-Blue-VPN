@@ -1,0 +1,143 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'com.google.gms.google-services'
+
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:0.14.0'
+    }
+}
+
+repositories {
+    maven { url 'https://maven.google.com' }
+}
+
+android {
+    namespace 'com.webihostapp.xprofreevpnapp'
+    compileSdkVersion 34
+    defaultConfig {
+        applicationId 'com.webihostapp.xprofreevpnapp'
+        minSdkVersion 21
+        targetSdkVersion 34
+        versionCode 15
+        versionName "1.0.15"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        dexOptions {
+            javaMaxHeapSize "4g"
+        }
+        buildConfigField "String", "BASE_HOST", "\"https://awebhtpo3u8g5t.ecoweb-network.com\""
+
+
+        buildConfigField "String", "BASE_OAUTH_METHOD", "\"anonymous\""
+
+        buildConfigField "String", "SHARED_PREFS", "\"NORTHGHOST_SHAREDPREFS\""
+        buildConfigField "String", "STORED_HOST_URL_KEY", "\"com.northghost.afvclient.STORED_HOST_KEY\""
+        buildConfigField "String", "STORED_CARRIER_ID_KEY", "\"com.northghost.afvclient.CARRIER_ID_KEY\""
+
+
+        buildConfigField "Boolean", "USE_IN_APP_PURCHASE", "true"
+        buildConfigField "String", "IN_APPKEY", "\"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAl5uXMT/9fIpE/SZvg2/5TeAgwtaCoUhyfZTff2UZqJaUN48fhr6Rev71Jyptw8ZswyOmR+E7y6JBxpxkOgw9BSUYaYmLwzJfcVaLBlU8dceFNGIEuToICMrJdRFCKjs2EfvFHjzg6uRFUUB4K+XikYlQE3plSAxxMpuuAwFaUYTqBB/ZOQVQDZF73kA7xaksePDex+yILc8+Sm5C/tfwVxx1aj1ISZmHj2S1ZYI4zHPMquO3hfxNxYMW+2VOzBrGu2ZbUnz8v1rPmHqMOQhV7mMLKTZRi53BsZ9OgfN+ObSnNw4rrGY3iOEUtaelHax0c1Dz2diyqO61luFKaoOcuwIDAQAB\""
+        buildConfigField "String", "MONTHLY", "\"oll_feature_for_onemonth\""
+        buildConfigField "String", "SIX_MONTH", "\"oll_feature_for_sixmonth\""
+        buildConfigField "String", "YEARLY", "\"oll_feature_for_year\""
+
+        buildConfigField "Boolean", "GOOGlE_AD", "true"
+
+        //one Signal
+        manifestPlaceholders = [
+                onesignal_app_id               : '04c5c9ce-4245-495c-aa71-a3e43d506058',
+                // Project number pulled from dashboard, local value is ignored.
+                onesignal_google_project_number: 'REMOTE'
+        ]
+    }
+    signingConfigs {
+        release {
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    packagingOptions {
+        exclude 'lib/arm64-v8a/libopenvpn.so'
+        exclude 'lib/arm64-v8a/libopvpnutil.so'
+        exclude 'lib/arm64-v8a/libjbcrypto.so'
+        exclude 'lib/arm64-v8a/libstlport_shared.so'
+        exclude 'lib/armeabi-v7a/libopenvpn.so'
+        exclude 'lib/armeabi-v7a/libopvpnutil.so'
+        exclude 'lib/armeabi-v7a/libjbcrypto.so'
+        exclude 'lib/armeabi-v7a/libstlport_shared.so'
+        exclude 'lib/x86/libopenvpn.so'
+        exclude 'lib/x86/libopvpnutil.so'
+        exclude 'lib/x86/libjbcrypto.so'
+        exclude 'lib/x86/libstlport_shared.so'
+        exclude 'lib/x86_64/libopenvpn.so'
+        exclude 'lib/x86_64/libopvpnutil.so'
+        exclude 'lib/x86_64/libjbcrypto.so'
+        exclude 'lib/x86_64/libstlport_shared.so'
+    }
+    aaptOptions {
+        cruncherEnabled = false
+    }
+    android {
+        buildFeatures {
+            buildConfig = true
+        }
+    }
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.github.AnchorFreePartner.hydra-sdk-android:sdk-core:4.9.0'
+    implementation 'com.github.AnchorFreePartner.hydra-sdk-android:hydra:4.9.0'
+    implementation 'com.github.AnchorFreePartner.hydra-sdk-android:openvpn:4.9.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.7.0-alpha02'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation "com.airbnb.android:lottie:4.1.0"
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.onesignal:OneSignal:3.15.4'
+    implementation 'com.google.android.gms:play-services-location:20.0.0'
+
+
+    implementation 'com.google.android.gms:play-services-ads:22.4.0'
+    //firebase
+    implementation platform('com.google.firebase:firebase-bom:30.3.1')
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'androidx.lifecycle:lifecycle-process:2.5.1'
+
+
+    implementation "com.android.billingclient:billing:6.0.1"
+
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
+
+}
+
+
+
+
